@@ -1,0 +1,28 @@
+#include "tm4c123gh6pm_registers.h"
+
+//Configure Switch2 on PF0 PIN to be used as a GPIO PIN for the switch use
+//PF0 Requires an unlock and commit to be used
+void SW2_Init(void)
+{
+    //Unlock the commit register of portF
+    GPIO_PORTF_LOCK_REG = 0x4C4F434B;
+    //Allow configurations to the PF0 pin using commit register
+    GPIO_PORTF_CR_REG |= (1<<0);
+    //Disable Analog for PF0
+    GPIO_PORTF_AMSEL_REG &= ~(1<<0);
+    //Choose GPIO mode for PIN PF0
+    GPIO_PORTF_PCTL_REG &= 0xFFFFFFF0;
+    //make the direction of the PIN PF0 to be output
+    GPIO_PORTF_DIR_REG |= (1<<0);
+    //Disable Alternate Function for PF0
+    GPIO_PORTF_AFSEL_REG &= ~(1<<0);
+    //Enable Pull up resistor for PF0
+    GPIO_PORTF_PUR_REG |= (1<<0);
+    //Enable digital I/O on PF0
+    GPIO_PORTF_DEN_REG |= (1<<0);
+}
+
+int main(void)
+{
+	return 0;
+}

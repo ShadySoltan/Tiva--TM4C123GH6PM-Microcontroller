@@ -1,0 +1,76 @@
+#include "tm4c123gh6pm_registers.h"
+
+//Example 1 Turn on Red led if Switch 2 is pressed and turn off if not pressed
+
+#define NUMBER_OF_ITERATIONS_PER_ONE_MILI_SECOND 364
+
+//Delay Function
+void Delay_MS(unsigned long long n)
+{
+    volatile unsigned long long count = 0;
+    while(count++ < (NUMBER_OF_ITERATIONS_PER_ONE_MILI_SECOND * n) );
+}
+
+//Configure Switch2 on PF0 PIN to be used as a GPIO PIN for the switch use
+//PF0 Requires an unlock and commit to be used
+void SW2_Init(void)
+{
+    //Unlock the commit register of portF
+    GPIO_PORTF_LOCK_REG = 0x4C4F434B;
+    //Allow configurations to the PF0 pin using commit register
+    GPIO_PORTF_CR_REG |= (1<<0);
+    //Disable Analog for PF0
+    GPIO_PORTF_AMSEL_REG &= ~(1<<0);
+    //Choose GPIO mode for PIN PF0
+    GPIO_PORTF_PCTL_REG &= 0xFFFFFFF0;
+    //make the direction of the PIN PF0 to be input
+    GPIO_PORTF_DIR_REG &= ~(1<<0);
+    //Disable Alternate Function for PF0
+    GPIO_PORTF_AFSEL_REG &= ~(1<<0);
+    //Enable Pull up resistor for PF0
+    GPIO_PORTF_PUR_REG |= (1<<0);
+    //Enable digital I/O on PF0
+    GPIO_PORTF_DEN_REG |= (1<<0);
+}
+
+//Enable PF1 (Red Led)
+void Led_Red_Init(void)
+{
+    //PF1 does not require to be unlocked
+    //Disable Analog on PF1
+    GPIO_PORTF_AMSEL_REG &= ~(1<<1);
+    //Choose GPIO to be the mode for PF1
+    GPIO_PORTF_PCTL_REG &= 0xFFFFFF0F;
+    //Disable Alternate Function
+    GPIO_PORTF_AFSEL_REG &= ~(1<<1);
+    //Configure the PIN PF1 to be output
+    GPIO_PORTF_DIR_REG |= (1<<1);
+    //Enable the PIN I/O
+    GPIO_PORTF_DEN_REG |= (1<<1);
+    //Disable the Led
+    GPIO_PORTF_DATA_REG &= ~(1<<1);
+}
+
+int main(void)
+{
+    /* Enable clock for PORTF and wait for clock to start */
+    SYSCTL_RCGCGPIO_REG |= 0x20;
+    while(!(SYSCTL_PRGPIO_REG & 0x20));
+
+    /* Initialize the SW2 and Red LED as GPIO Pins */
+    SW2_Init();
+    Led_Red_Init();
+
+    while(1)
+    {
+        /* Check the switch state */
+        if(!(GPIO_PORTF_DATA_REG & (1<<0)))
+        {
+            GPIO_PORTF_DATA_REG |= (1<<1);  /* LED ON */
+        }
+        else
+        {
+            GPIO_PORTF_DATA_REG &= ~(1<<1); /* LED OFF */
+        }
+    }
+}

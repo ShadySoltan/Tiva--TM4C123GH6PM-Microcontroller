@@ -1,0 +1,17 @@
+#include "tm4c123gh6pm_registers.h"
+//Example4 we will use two switches SW1(PF4) and SW2(PF0) with pull up configuration
+//3 RGB leds att PF1,Pf2, and PF3
+//Flash Red(PF1) and Blue(PF2) each for half a second in order in case SW1(PF4) is pressed
+//Flash Blue(Pf2) and Green(PF3) each for half a second in order in case SW2(PF0) is pressed
+
+
+
+int main(void)
+{
+    while(1)
+    {
+
+    }
+
+	return 0;
+}

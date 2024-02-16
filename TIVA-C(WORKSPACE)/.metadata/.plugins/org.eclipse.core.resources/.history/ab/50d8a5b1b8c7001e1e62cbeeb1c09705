@@ -1,0 +1,76 @@
+/*
+ * GPIO_EXAMPLE2.c
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: shady
+ */
+#include "tm4c123gh6pm_registers.h"
+
+//Example 2 using switch 1 PF4 toggle Blue led PF2 every new switch press
+
+#define NUMBER_OF_ITERATIONS_PER_ONE_MILI_SECOND 364
+
+//Delay Function
+void Delay_MS(unsigned long long n)
+{
+    volatile unsigned long long count = 0;
+    while(count++ < (NUMBER_OF_ITERATIONS_PER_ONE_MILI_SECOND * n) );
+}
+
+
+//For switch 1 on PF4 it does not require to be unlocked
+void SW1_Init(void)
+{
+    //Disable Analog for PF4
+    GPIO_PORTF_AMSEL_REG &= ~(1<<4);
+    //Disable Alternate Function for PF4
+    GPIO_PORTF_AFSEL_REG &= ~(1<<4);
+    //Choose GPIO mode for PF4
+    GPIO_PORTF_PCTL_REG &= 0xFFF0FFFF;
+    //Configure the PIN to be input
+    GPIO_PORTF_DIR_REG &= ~(1<<4);
+    //Choose Pull up resistor
+    GPIO_PORTF_PUR_REG |= (1<<4);
+    //Enable digital I/O
+    GPIO_PORTF_DEN_REG |= (1<<4);
+}
+
+//Enable PF2 Blue led
+void Led_Blue_Init(void)
+{
+    //Disable Analog for PF2
+    GPIO_PORTF_AMSEL_REG &= ~(1<<2);
+    //Disable Alternate Function for PF2
+    GPIO_PORTF_AFSEL_REG &= ~(1<<2);
+    //Choose GPIO mode for PF2
+    GPIO_PORTF_PCTL_REG &= 0xFFFFF0FF;
+    //Configure the PIN to be Output
+    GPIO_PORTF_DIR_REG |= (1<<2);
+    //Enable digital I/O
+    GPIO_PORTF_DEN_REG |= (1<<2);
+    //Disable the Led
+    GPIO_PORTF_DATA_REG &= ~(1<<2);
+}
+
+int main()
+{
+    uint8 sw_flag = 0;
+    //Toggle the Led every new switch press
+    while(1)
+    {
+
+        if(!(GPIO_PORTF_DATA_REG&1<<0))
+        {
+            //The switch is pressed
+            //Handle debounce
+            Delay_MS(10);
+            if(sw_flag == 0)
+            {
+                gpio_portf_data
+            }
+        }
+    }
+    return 0;
+}
+
+

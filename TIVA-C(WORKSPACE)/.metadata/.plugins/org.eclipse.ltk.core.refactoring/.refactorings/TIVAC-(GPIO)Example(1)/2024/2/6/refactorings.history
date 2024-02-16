@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;TIVAC-Examples/main.c&apos; to &apos;GPIO_EXAMPLE1.c&apos;" description="Rename resource &apos;main.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="main.c" name="GPIO_EXAMPLE1.c" stamp="1707527282435" updateReferences="true"/>
+</session>

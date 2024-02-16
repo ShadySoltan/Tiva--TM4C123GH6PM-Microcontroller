@@ -1,0 +1,108 @@
+#include "tm4c123gh6pm_registers.h"
+
+//Like last example but use system clock to be 10MHZ
+
+//Masking Values for PLL Registers
+#define SYSCTL_RCC2_USERCC2_MASK        0x80000000  /* USERCC2 Bit MASK */
+#define SYSCTL_RCC2_BYPASS2_MASK        0x00000800  /* PLL BYPASS2 Bit MASK */
+#define SYSCTL_RCC_XTAL_MASK            0x000007C0  /* XTAL Bits MASK */
+#define SYSCTL_RCC_XTAL_8MHZ            0x0E        /* 8 MHz Crystal Value */
+#define SYSCTL_RCC_XTAL_16MHZ           0x15        /* 16 MHz Crystal Value */
+#define SYSCTL_RCC_XTAL_BIT_POS         6           /* XTAL Bits Position start from bit number 6 */
+#define SYSCTL_RCC2_OSCSRC2_MASK        0x00000070  /* OSCSRC2 Bits MASK */
+#define SYSCTL_RCC2_OSCSRC2_MOSC        0x0         /* MOSC(Main Oscillator) value */
+#define SYSCTL_RCC2_OSCSRC2_BIT_POS     4           /* OSCSRC2 Bits Position start from bit number 4 */
+#define SYSCTL_RCC2_PWRDN2_MASK         0x00002000  /* PWRDN2 Bit MASK */
+#define SYSCTL_RCC2_DIV400_MASK         0x40000000  /* DIV400 Bit MASK to Divide PLL as 400 MHz vs. 200 */
+#define SYSCTL_RCC2_SYSDIV2_MASK        0x1FC00000  /* SYSDIV2 Bits MASK */
+#define SYSCTL_RIS_PLLLRIS_MASK         0x00000040  /* PLLLRIS Bit MASK */
+#define SYSCTL_RCC2_SYSDIV2_BIT_POS     22       /* SYSDIV2 Bits Position start from bit number 22 */
+#define SYSDIV2_VALUE                   39
+
+void PLL_Init(void)
+{
+    /* 1) Configure the system to use RCC2 for advanced features
+          such as 400 MHz PLL and non-integer System Clock Divisor */
+    SYSCTL_RCC2_REG |= SYSCTL_RCC2_USERCC2_MASK;
+
+    /* 2) Bypass PLL while initializing, Don’t use PLL while initialization */
+    SYSCTL_RCC2_REG |= SYSCTL_RCC2_BYPASS2_MASK;
+
+    /* 3) Select the crystal value and oscillator source */
+    SYSCTL_RCC_REG &= ~SYSCTL_RCC_XTAL_MASK; //Clear XTAL Bits
+    SYSCTL_RCC_REG |= (SYSCTL_RCC_XTAL_16MHZ << SYSCTL_RCC_XTAL_BIT_POS);
+    SYSCTL_RCC2_REG &= ~SYSCTL_RCC2_OSCSRC2_MASK;
+    SYSCTL_RCC2_REG |= (SYSCTL_RCC2_OSCSRC2_MOSC << SYSCTL_RCC2_OSCSRC2_BIT_POS);  /* configure for main oscillator source */
+
+    /* 4) Activate PLL by clearing PWRDN2 */
+    SYSCTL_RCC2_REG &= ~SYSCTL_RCC2_PWRDN2_MASK;
+
+    /* 5) Set the desired system divider and the system divider least significant bit */
+    SYSCTL_RCC2_REG |= SYSCTL_RCC2_DIV400_MASK;
+    SYSCTL_RCC2_REG = (SYSCTL_RCC2_REG & ~SYSCTL_RCC2_SYSDIV2_MASK)|(SYSDIV2_VALUE << SYSCTL_RCC2_SYSDIV2_BIT_POS);
+
+    /* 6) Wait for the PLL to lock by polling PLLLRIS bit */
+    while(!(SYSCTL_RIS_REG&SYSCTL_RIS_PLLLRIS_MASK));
+
+    //Enable The PLL by clearning the BYPASS2 bit
+    SYSCTL_RCC2_REG &= ~SYSCTL_RCC2_BYPASS2_MASK;
+}
+
+void SysTick_Init(void)
+{
+    SYSTICK_CTRL_REG    = 0;               /* Disable the SysTick Timer by Clear the ENABLE Bit */
+    SYSTICK_RELOAD_REG  = 9999999;        /* Set the Reload value with 15999999 to count 0.2 Second */
+    SYSTICK_CURRENT_REG = 0;               /* Clear the Current Register value */
+    /* Configure the SysTick Control Register
+     * Enable the SysTick Timer (ENABLE = 1)
+     * Disable SysTick Interrupt (INTEN = 0)
+     * Choose the clock source to be System Clock (CLK_SRC = 1) */
+    SYSTICK_CTRL_REG   |= 0x05;
+}
+
+void Leds_Init(void)
+{
+    /* Disable Analog on PF1, PF2 and PF3 */
+    GPIO_PORTF_AMSEL_REG &= 0xF1;
+    /* Clear PMCx bits for PF1, PF2 and PF3 to use it as GPIO pin */
+    GPIO_PORTF_PCTL_REG  &= 0xFFFF000F;
+    /* Configure PF1, PF2 and PF3 as output pin */
+    GPIO_PORTF_DIR_REG   |= 0x0E;
+    /* Disable alternative function on PF1, PF2 and PF3 */
+    GPIO_PORTF_AFSEL_REG &= 0xF1;
+    /* Enable Digital I/O on PF1, PF2 and PF3 */
+    GPIO_PORTF_DEN_REG   |= 0x0E;
+    /* Clear bit 0, 1 and 2 in Data register to turn off the leds */
+    GPIO_PORTF_DATA_REG  &= 0xF1;
+}
+
+int main(void)
+{
+    /* Enable clock for PORTF and wait for clock to start */
+    SYSCTL_RCGCGPIO_REG |= 0x20;
+    while(!(SYSCTL_PRGPIO_REG & 0x20));
+
+    /* Initialize the LEDs as GPIO Pins */
+    Leds_Init();
+
+    /* Initialize the PLL to operate using 80Mhz frequency */
+    PLL_Init();
+
+    /* Initialize the SysTick Timer to count one second */
+    SysTick_Init();
+
+    while(1)
+    {
+        GPIO_PORTF_DATA_REG = (GPIO_PORTF_DATA_REG & 0xF1) | 0x02; /* Turn on the Red LED and disable the others */
+        /* SysTick needs to tick 1 times to count 1 second using 10Mhz frequency */
+        while(!(SYSTICK_CTRL_REG & (1<<16))); /* wait until the COUNT flag = 1 which mean SysTick Timer reaches ZERO value ... COUNT flag is cleared after read the CTRL register value */
+
+        GPIO_PORTF_DATA_REG = (GPIO_PORTF_DATA_REG & 0xF1) | 0x04; /* Turn on the Blue LED and disable the others */
+        /* SysTick needs to tick 1 times to count 1 second using 10Mhz frequency */
+        while(!(SYSTICK_CTRL_REG & (1<<16))); /* wait until the COUNT flag = 1 which mean SysTick Timer reaches ZERO value ... COUNT flag is cleared after read the CTRL register value */
+
+        GPIO_PORTF_DATA_REG = (GPIO_PORTF_DATA_REG & 0xF1) | 0x08; /* Turn on the Green LED and disable the others */
+        /* SysTick needs to tick 1 times to count 1 second using 10Mhz frequency */
+        while(!(SYSTICK_CTRL_REG & (1<<16))); /* wait until the COUNT flag = 1 which mean SysTick Timer reaches ZERO value ... COUNT flag is cleared after read the CTRL register value */
+    }
+}

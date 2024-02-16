@@ -1,0 +1,13 @@
+#include "tm4c123gh6pm_registers.h"
+
+//Masking Values for PLL Registers
+#define SYSCTL_RCC2_USERCC2_MASK 0x80000000
+#define SYSCTL_RCC2_BYPASS_MASK 0x00000800
+
+int main(void)
+{
+    while(1)
+    {
+
+    }
+}
