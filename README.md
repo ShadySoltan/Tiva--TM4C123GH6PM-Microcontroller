@@ -14,12 +14,11 @@ Examples on TIVAC board:-
      Ex4) Switch 1 flash red and blue leds each for half a second each new press, and the same
      for switch 2 but with blue and green leds.
 _________________________________________________________________________________________________________________
-2)  Systick-Timer(Examples):
+2)  Systick-Timer(Examples):(Interrupts are not used in those two examples)
 
      Ex1) While pressing on switch 2 toggle the red led every 1 second using systick timer
 
      Ex2) Flash each led in the RGB leds for one second each using systick timer
-     (Interrupts are not used in those two examples)
 _________________________________________________________________________________________________________________
 3)  PLL(Examples):
 
