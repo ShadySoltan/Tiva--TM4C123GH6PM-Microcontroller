@@ -30,6 +30,7 @@ ________________________________________________________________________________
 4) NVIC(Examples):
 
      Ex1) 
+
           a)Use Blue Led at PF2.
 
           b)Generate Edge triggered interrupt on PF4 pin using SW1. Interrupt should be configured with the falling edge.
@@ -37,6 +38,7 @@ ________________________________________________________________________________
           c)Turn on the LED with the falling edge.
 
      Ex2) 
+
           a) MCU frequency 16MHZ
 
           b) Use the 3 RGB Led at PF1, PF2, and PF3
@@ -48,6 +50,7 @@ ________________________________________________________________________________
           e) edge and it should turn on 3 RGB LEDs for 5 seconds when an interrupt occurs. Use delay function in the example
 
      Ex3) 
+     
           a)   MCU Frequency 16MHZ
 
           b)   Use red led PF1
