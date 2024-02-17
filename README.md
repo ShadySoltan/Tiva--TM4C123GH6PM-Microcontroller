@@ -58,4 +58,14 @@ ________________________________________________________________________________
 
           d)   Use systick timer to count to half second using interrupt technique*/
 
+     Ex4)
+
+          a) MCU Frequency is 80MHZ (Use PLL)
+
+          b) Use 3 RGB LEDS at PF1, PF2, and PF3
+
+          c) A roll action is performed using the 3 LEDs each LED for 1 Second. This operation is done continuously
+          
+          d) Use SYSTICK timer to count the one second using interrupt technique*/
+
 _________________________________________________________________________________________________________________

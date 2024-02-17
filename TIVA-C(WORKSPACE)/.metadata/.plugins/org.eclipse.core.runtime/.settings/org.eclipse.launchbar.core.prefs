@@ -2,7 +2,7 @@ LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
 activeLaunchTarget=null\:---
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(1),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(2),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(3),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(4),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(SYSTICKTIMER)Example(1),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(SYSTICKTIMER)Example(2),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(PLL)Example(1),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(PLL)Example(2)
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(1),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(2),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(3),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(4),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(SYSTICKTIMER)Example(1),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(SYSTICKTIMER)Example(2),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(PLL)Example(1),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(PLL)Example(2),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(NVIC)Example(1),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(NVIC)Example(2),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(NVIC)Example(3),org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(NVIC)Example(4)
 eclipse.preferences.version=1
 org.eclipse.launchbar.core.descriptorType.default\:Challenge/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:Challenge/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
@@ -17,3 +17,5 @@ org.eclipse.launchbar.core.descriptorType.default\:Exercise3/activeLaunchTarget=
 org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(1)/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(1)/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(GPIO)Example(4)/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(NVIC)Example(1)/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:TIVAC-(NVIC)Example(3)/activeLaunchMode=debug

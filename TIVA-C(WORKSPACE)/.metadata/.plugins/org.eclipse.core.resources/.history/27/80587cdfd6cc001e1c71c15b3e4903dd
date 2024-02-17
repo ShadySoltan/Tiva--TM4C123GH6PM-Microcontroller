@@ -1,0 +1,38 @@
+#include "tm4c123gh6pm_registers.h"
+
+#define GPIO_PORTF_PRIORITY_MASK      0xFF1FFFFF
+#define GPIO_PORTF_PRIORITY_BITS_POS  21
+#define GPIO_PORTF_INTERRUPT_PRIORITY 2
+
+#define NUMBER_OF_ITERATIONS_PER_ONE_MILI_SECOND 364
+
+void Delay_MS(unsigned long long n)
+{
+    volatile uint64 count = 0;
+    while(count++ < (NUMBER_OF_ITERATIONS_PER_ONE_MILI_SECOND * n) );
+}
+
+/*Requirements:
+ * MCU frequency 16MHZ
+ * Use the 3 RGB Led at PF1, PF2, and PF3
+ * A roll action is performed using the LEDs each led for 1 second. the first LED is lit
+ * and roll down to the last LED then back to the first LED. This operation is done continuously
+ * Generate Edge Triggered Interrupt on PF0 pin using SW2. Interrupt should be triggered with falling
+ * edge and it should turn on 3 RGB LEDs for 5 seconds when an interrupt occurs. Use delay function in the
+ * example*/
+
+volatile uint8
+
+//GPIO PORTF INTERRUPT HANDLER
+void GPIOPortF_Handler(void)
+{
+
+}
+
+int main(void)
+{
+    while(1)
+    {
+
+    }
+}

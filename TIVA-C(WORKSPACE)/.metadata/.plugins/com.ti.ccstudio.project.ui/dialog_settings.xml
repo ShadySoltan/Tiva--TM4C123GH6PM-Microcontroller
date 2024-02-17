@@ -5,7 +5,7 @@
 	<section name="com.ti.ccstudio.project.ui.internal.properties.DynamicPropertiesPageManager">
 	</section>
 	<section name="com.ti.ccstudio.project.ui.internal.wizards.importexport.ProjectImportPage">
-		<item key="CCS.BROWSE_DIRS_FILTER" value="C:\Users\shady\Desktop\Edges Training\Training Examples\1.GPIO_Exercises_WS\1.GPIO_Exercises_WS\Exercise3"/>
+		<item key="CCS.BROWSE_DIRS_FILTER" value="C:\Users\shady\Desktop\Edges Training\Training Examples\4.NVIC_Exercises_WS\4.NVIC_Exercises_WS\Exercise4"/>
 		<item key="CCS.COPY_INTO_WORKSPACE" value="false"/>
 		<item key="CCS.IMPORT_REFERENCED_PROJECTS" value="false"/>
 		<item key="CCS.IMPORT_FROM_ARCHIVE" value="false"/>
