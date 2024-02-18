@@ -30,11 +30,11 @@ ________________________________________________________________________________
 
      Ex1) 
 
-          a)Use Blue Led at PF2.
+          a) Use Blue Led at PF2.
 
-          b)Generate Edge triggered interrupt on PF4 pin using SW1. Interrupt should be configured with the falling edge.
-
-          c)Turn on the LED with the falling edge.
+          b) Generate Edge triggered interrupt on PF4 pin using SW1. Interrupt should be configured with the falling edge.
+ 
+          c) Turn on the LED with the falling edge.
 
      Ex2) 
 
@@ -50,13 +50,13 @@ ________________________________________________________________________________
 
      Ex3) 
      
-          a)   MCU Frequency 16MHZ
+          a) MCU Frequency 16MHZ
 
-          b)   Use red led PF1
+          b) Use red led PF1
 
-          c)   Flash the led every half second
+          c) Flash the led every half second
 
-          d)   Use systick timer to count to half second using interrupt technique*/
+          d) Use systick timer to count to half second using interrupt technique
 
      Ex4)
 
@@ -66,6 +66,6 @@ ________________________________________________________________________________
 
           c) A roll action is performed using the 3 LEDs each LED for 1 Second. This operation is done continuously
           
-          d) Use SYSTICK timer to count the one second using interrupt technique*/
+          d) Use SYSTICK timer to count the one second using interrupt technique
 
 _________________________________________________________________________________________________________________
