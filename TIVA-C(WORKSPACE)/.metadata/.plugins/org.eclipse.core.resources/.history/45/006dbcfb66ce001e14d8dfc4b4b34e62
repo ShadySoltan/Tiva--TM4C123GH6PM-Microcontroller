@@ -1,0 +1,19 @@
+#include "tm4c123gh6pm_registers.h"
+
+/*Requirements:
+    a) Same as exercise 4 in NVIC examples but MCU frequency is 16MHZ (NO PLL)
+
+    b) Switch the access level to unprivileged by setting the bit 0 in the processor control register
+
+    c) Call SysTick_Init after that it should trigger hard fault as SysTick and NVIC registers could not be
+        accessed in the unprivileged access level. */
+
+
+
+int main(void)
+{
+	while(1)
+	{
+
+	}
+}
