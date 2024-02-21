@@ -68,4 +68,51 @@ ________________________________________________________________________________
           
           d) Use SYSTICK timer to count the one second using interrupt technique
 
+     Ex5)
+
+          a) Same as exercise 4 in NVIC examples but MCU frequency is 16MHZ (NO PLL)
+
+          b) Switch the access level to unprivileged by setting the bit 0 in the processor control register
+
+          c) Call SysTick_Init after that it should trigger hard fault as SysTick  and NVIC registers could not be
+          accessed in the unprivileged access level.  
+
+     Ex6)
+
+          a) Same as exercise 4 in NVIC examples but MCU frequency is 16MHZ (NO PLL)
+
+          b) Switch the access level to unprivileged by setting the bit 0 in the processor control register
+
+          c) Trigger the SVC exception using SVC instruction and in the SVC handler go back to privileged access level by clear bit 0 in the
+          processor control register.
+
+     Ex7)
+
+          a) Same as exercise 4 in NVIC examples but MCU frequency is 16MHZ (NO PLL)
+
+          b) Roll the three leds using a delay function in the main app
+
+          c) Use the SysTick timer to count to 1 second using interrupt. after 5 seconds SysTick timer
+          it will trigger and interrupt
+
+          d) Inside the SysTick Handler turn all 3 LEDs for 5 seconds and turn on the pendSV inside it
+
+          e) The PendSV should wait for the SysTick handler to finish first then start its exception
+
+          f) Inside the PendSV handler turn off all the leds for 5 seconds then return back to main program   
+
+     Ex8)
+
+          a) We will run exercise 1 in GPIO but without activating the clock for PORTF
+ 
+          b) This will lead to a HARD FAULT since the BUS FAULT is disabled
+
+     Ex9)
+
+          a) Same as example 8 but we will enable the BUS FAULT this time
+ 
+          b) Same fault but will lead to BUS FAULT not a HARD FAULT
+_________________________________________________________________________________________________________________
+4) MPU(Examples):
+
 _________________________________________________________________________________________________________________
