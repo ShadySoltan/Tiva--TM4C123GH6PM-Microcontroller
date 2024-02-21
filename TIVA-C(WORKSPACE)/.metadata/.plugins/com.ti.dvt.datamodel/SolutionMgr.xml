@@ -5,7 +5,7 @@
    <string>defaultSolution</string>
    <void method="set">
     <object idref="SolutionManager$PersistState0"/>
-    <string>C:\Users\shady\Desktop\TIVA-C(WORKSPACE)\dvt\AnalysisSolutionsTemp\AnalysisSolution1708347832846\null</string>
+    <string>C:\ti\ccs1260\ccs\ccs_base\dvt_4.1.0.202307061549\CodeGen\solutions\CodeGenCoverage</string>
    </void>
   </void>
  </object>
@@ -14,10 +14,10 @@
  <void id="ArrayList0" method="get">
   <object idref="SolutionManager$PersistState0"/>
   <void method="add">
-   <string>C:\ti\ccs1260\ccs\ccs_base\dvt_4.1.0.202307061549\CodeGen\solutions\CodeGenCoverage</string>
+   <string>C:\Users\shady\Desktop\TIVA-C(WORKSPACE)\dvt\AnalysisSolutionsTemp\AnalysisSolution1708515415267\null</string>
   </void>
   <void method="add">
-   <string>C:\Users\shady\Desktop\TIVA-C(WORKSPACE)\dvt\AnalysisSolutionsTemp\AnalysisSolution1708347832846\null</string>
+   <string>C:\ti\ccs1260\ccs\ccs_base\dvt_4.1.0.202307061549\CodeGen\solutions\CodeGenCoverage</string>
   </void>
  </void>
 </void>

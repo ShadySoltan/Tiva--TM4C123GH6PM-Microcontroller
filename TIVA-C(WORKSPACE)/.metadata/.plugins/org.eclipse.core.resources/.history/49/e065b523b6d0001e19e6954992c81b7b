@@ -1,0 +1,10 @@
+#include "tm4c123gh6pm_registers.h"
+
+/*Requirements:
+ * a) We will run exercise 1 in GPIO but without activating the clock for PORTF
+ *
+ * b) This will lead to a HARD FAULT since the BUS FAULT is disabled*/
+int main(void)
+{
+	return 0;
+}
