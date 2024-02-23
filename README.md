@@ -2,8 +2,10 @@
 ![alt text](texas-launchpad-evolution-kit.jpg)
 __________________________________________________________________________________
 Examples on TIVAC board:-
+__________________________________________________________________________________
 
 1)  GPIO(Examples):
+_____________________
 
      Ex1) Turn on red led by pressing on switch 2
 
@@ -13,20 +15,25 @@ Examples on TIVAC board:-
 
      Ex4) Switch 1 flash red and blue leds each for half a second each new press, and the same
      for switch 2 but with blue and green leds.
+
 _________________________________________________________________________________________________________________
-2)  Systick-Timer(Examples):(Interrupts are not used in those two examples)
+2)  Systick-Timer(Examples): ((Interrupts are not used in those two examples))
+_____________________________________________________________________________
 
      Ex1) While pressing on switch 2 toggle the red led every 1 second using systick timer
 
      Ex2) Flash each led in the RGB leds for one second each using systick timer
+
 _________________________________________________________________________________________________________________
 3)  PLL(Examples):
 
      Ex1) While pressing on switch 2 toggle the red led every 1 second using systick timer and using clock 80MHZ
 
      Ex2) While pressing on switch 2 toggle the red led every 1 second using systick timer and using clock 10MHZ
+     
 _________________________________________________________________________________________________________________
 4) NVIC(Examples):
+_____________________
 
      Ex1) 
 
@@ -114,5 +121,6 @@ ________________________________________________________________________________
           b) Same fault but will lead to BUS FAULT not a HARD FAULT
 _________________________________________________________________________________________________________________
 4) MPU(Examples):
+_____________________
 
 _________________________________________________________________________________________________________________
