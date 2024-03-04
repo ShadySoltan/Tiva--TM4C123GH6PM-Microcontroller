@@ -123,4 +123,51 @@ ________________________________________________________________________________
 4) MPU(Examples):
 _____________________
 
+     Ex1) 
+
+         a) This is example4 in NVIC examples but with clock frequency 16MHZ.
+
+         b) We will enable memory management fault exception.
+
+         c) Enable MPU at the beginning of the program for only two regions:
+             -Region 1: FLASH EEPROM memory to be able to access code area
+
+             -Region 2: SRAM memory to be able to access code area
+
+         d) In this example a memory management fault will be triggered as a    result of accessing the register REGCGC2, since
+             it is part from the system control space region.
+
+     Ex2)
+
+         a) Same as example one in the MPU but we will fix the fault by enabling the PRIVDEFENA bit in CTRL register to allow
+             the privilege software to access the background area.
+
+         b) We will enable memory management fault exception.
+
+         c) Enable MPU at the beginning of the program for only two regions:
+             -Region 1: FLASH EEPROM memory to be able to access code area
+
+             -Region 2: SRAM memory to be able to access code area
+
+         d) In this example the memory management fault will not be triggered.
+
+     Ex3)
+
+         a) Another fix for example one in MPU by giving access to system control region so we have to program the MPU for that region.
+
+         b) We will enable memory management fault exception.
+
+         c) Enable MPU at the beginning of the program for only two regions:
+             -Region 1: FLASH EEPROM memory to be able to access code area
+
+             -Region 2: SRAM memory to be able to access code area
+
+             -Region 3: System Control Space to be able to access the registers to allow clock for PORTF
+
+         d) In this example the memory management fault will not be triggered.
+
+_________________________________________________________________________________________________________________
+4) UART(Examples):
+_____________________   
+
 _________________________________________________________________________________________________________________
