@@ -170,4 +170,24 @@ ________________________________________________________________________________
 4) UART(Examples):
 _____________________   
 
+     Ex1)
+
+          a) Use 16MHZ CPU frequency.
+
+          b) Enable UART0.
+
+          c)
+           -Receive data from PC and re send it back again.
+
+           -Receive string from PC till '#' and re send the string again.
+
+           -Receive byte from PC and re send it back again. 
+
+     Ex2)
+
+          a) Use 16MHZ CPU frequency.
+
+          b) Enable UART0.
+
+          c)Receive a number from PC from 0-7 then turn on the corresponding RGB LED.                 
 _________________________________________________________________________________________________________________
