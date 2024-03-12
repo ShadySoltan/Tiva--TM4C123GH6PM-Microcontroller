@@ -198,5 +198,5 @@ _____________________
 
           Connection:
                
-               ![alt text](HC05-TIVAC.bmp)
+![alt text](HC05-TIVAC.bmp)
                
