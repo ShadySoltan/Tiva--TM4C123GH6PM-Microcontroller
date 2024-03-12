@@ -199,4 +199,4 @@ Interfacing the HC-05 Bluetooth module with the TIVA TM4C123GH6PM microcontrolle
 Connection:
                
 ![alt text](HC05-TIVAC.bmp)
-               
+_________________________________________________________________________________________________________________
