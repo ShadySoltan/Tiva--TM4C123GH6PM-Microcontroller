@@ -203,8 +203,9 @@ ________________________________________________________________________________
 6) SPI-UART(Project):
 _____________________ 
 
+This project utilizes the Serial Peripheral Interface (SPI) protocol to establish connectivity between a TivaC Launchpad and an ATmega32 microcontroller. In this setup, the TivaC Launchpad serves as the master node, while the ATmega32 acts as the slave node. The TivaC Launchpad receives a predetermined character via Bluetooth through UART protocol and forwards it to the ATmega32. Upon receiving the character, the ATmega32 processes it, triggering the illumination of a specific LED and updating the LCD display to reflect the LED's status. This integration enables seamless communication and control between the two nodes, facilitating efficient data exchange and real-time monitoring within the system.
 
-Connection:
+SPI Connection with ATMEGA-32:
 
 ![alt text](IMG1.png)
 _______________________________
