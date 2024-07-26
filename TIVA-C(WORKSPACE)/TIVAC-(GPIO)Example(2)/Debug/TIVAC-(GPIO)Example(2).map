@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.7                     
 ******************************************************************************
->> Linked Sat Feb 10 04:09:47 2024
+>> Linked Thu Mar 28 04:58:29 2024
 
 OUTPUT FILE NAME:   <TIVAC-(GPIO)Example(2).out>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 000003a9

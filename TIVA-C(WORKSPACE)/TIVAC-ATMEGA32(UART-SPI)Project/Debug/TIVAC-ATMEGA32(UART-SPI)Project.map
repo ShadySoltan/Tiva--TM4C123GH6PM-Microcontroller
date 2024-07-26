@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.7                     
 ******************************************************************************
->> Linked Wed Mar 20 17:27:31 2024
+>> Linked Sat Jul  6 06:31:32 2024
 
 OUTPUT FILE NAME:   <TIVAC-ATMEGA32(UART-SPI)Project.out>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000621
